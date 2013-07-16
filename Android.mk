@@ -67,6 +67,11 @@ include $(CLEAR_VARS)
 LOCAL_CLANG := true
 LOCAL_SRC_FILES := $(common_SRC_FILES)
 LOCAL_CFLAGS += $(common_CFLAGS) -ftrapv
+
+# Disable link time optimization here so we may keep it enabled globally
+# and also build with clang.
+LOCAL_CFLAGS += -fno-lto
+
 LOCAL_C_INCLUDES += $(common_C_INCLUDES) \
 	external/zlib
 LOCAL_SHARED_LIBRARIES := \
